@@ -22,8 +22,8 @@
 - Conectar repo. *Build:* `npm run build`. *Build output directory:* `.vercel/output/static` usando el *Adapter* de Next (opcional) o export estático si migrás a contenido estático.
 
 **Formas de contacto configuradas**
-- WhatsApp directo: https://wa.me/5491125826179?text=Hola%20Marcelo%2C%20vengo%20desde%20la%20web%20y%20quiero%20agendar%20diagn%C3%B3stico
-- Email: consultas@estudioretamal.com.ar
+- WhatsApp directo: https://wa.me/xxxxxxxxxxxxx?text=Hola%20Marcelo%2C%20vengo%20desde%20la%20web%20y%20quiero%20agendar%20diagn%C3%B3stico
+- Email: consultas@fomatthis.com
 
 **Siguientes mejoras**
 - Reemplazar el botón de email por un servicio de formularios (ej.: Formspree, Tally, Netlify Forms) para guardar leads.
