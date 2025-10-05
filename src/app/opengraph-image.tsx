@@ -1,28 +1,32 @@
 import { ImageResponse } from "next/og";
-
+export const runtime = "edge";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function Image({ searchParams }: { searchParams: { title?: string } }) {
-  const title = (searchParams?.title || "Estudio Retamal | Abogados").slice(0, 80);
+export default async function OG() {
   return new ImageResponse(
     (
       <div
         style={{
+          fontSize: 56,
+          background: "#0B0B0C",
+          color: "#F5F1E6",
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          alignItems: "center",
           padding: 64,
-          background:
-            "linear-gradient(120deg, #0b1220 0%, #0f172a 60%)",
-          color: "#e2e8f0",
-          fontSize: 48,
+          gap: 32,
         }}
       >
-        <div style={{fontSize: 18, opacity: .75, marginBottom: 16}}>Estudio Retamal</div>
-        <div style={{fontWeight: 700, lineHeight: 1.1}}>{title}</div>
+        {/* Cambia la ruta si usas png/webp */}
+        {/* @ts-ignore */}
+        <img src="https://www.estudioretamal.com.ar/logo-er.png" width="140" height="140" />
+        <div>
+          <div style={{ color: "#8B5E3C" }}>Estudio Retamal</div>
+          <div style={{ fontWeight: 700 }}>Servicios legales en La Plata</div>
+          <div style={{ fontSize: 28, marginTop: 8 }}>Familia · Laboral · Consumidor</div>
+        </div>
       </div>
     ),
     { ...size }
