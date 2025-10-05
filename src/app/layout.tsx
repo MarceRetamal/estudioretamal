@@ -1,49 +1,49 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title:
+    "Cobro judicial ético en La Plata | TEA, alimentos, honorarios – Estudio Retamal",
+  description:
+    "Abogado en La Plata. Cobro judicial ético y rápido: cobertura TEA, ejecuciones de alimentos, ejecución de honorarios y carteras B2B. Diagnóstico sin costo.",
+  keywords: [
+    "La Plata",
+    "abogado",
+    "cobro judicial",
+    "TEA",
+    "honorarios",
+    "cobertura TEA",
+    "recupero legal",
+  ],
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Cobro judicial ético en La Plata",
+    description: "Medidas reales en días, sin hostigamiento.",
+    url: "https://estudioretamal.vercel.app/",
+    siteName: "Estudio Retamal",
+    images: [
+      { url: "/og-retamal.jpg", width: 1200, height: 630 },
+    ],
+    locale: "es_AR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Cobro judicial ético en La Plata",
+    description: "Medidas reales en días, sin hostigamiento.",
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
+    <html lang="es" className={`${inter.variable} ${manrope.variable}`}>
+      <body className="font-sans antialiased bg-neutral-50 text-neutral-900">
         {children}
-        <Toaster />
       </body>
     </html>
   );
