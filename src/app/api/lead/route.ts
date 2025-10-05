@@ -1,62 +1,39 @@
-import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
+import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export async function POST(req: Request) {
+  const form = await req.formData();
+  const data = Object.fromEntries(form.entries());
 
-export async function POST(req: NextRequest) {
+  // Tip: valida con Zod en producción
+  const body = `
+Nueva consulta desde la web:
+Nombre: ${data.name}
+Tel: ${data.phone}
+Email: ${data.email}
+Área: ${data.area}
+Mensaje: ${data.message}
+`;
+
+  // Si configuras RESEND_API_KEY enviar correo (o integra tu preferido)
   try {
-    const contentType = req.headers.get("content-type") || "";
-    let payload: Record<string, string> = {};
-
-    if (contentType.includes("application/json")) {
-      payload = await req.json();
-    } else if (contentType.includes("application/x-www-form-urlencoded") || contentType.includes("multipart/form-data")) {
-      const form = await req.formData();
-      payload = Object.fromEntries(form.entries()) as Record<string, string>;
-    } else {
-      try { payload = await req.json(); } catch {}
+    if (process.env.RESEND_API_KEY) {
+      const r = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          from: "Web Estudio <no-reply@estudioretamal.com.ar>",
+          to: ["consultas@estudioretamal.com.ar"],
+          subject: "Nueva consulta Web",
+          text: body,
+        }),
+      });
+      if (!r.ok) throw new Error("Resend error");
     }
-
-    const name = (payload.name || "").toString().trim();
-    const email = (payload.email || "").toString().trim();
-    const phone = (payload.phone || "").toString().trim();
-    const message = (payload.message || "").toString().trim();
-
-    if (!name || !email || !message) {
-      return NextResponse.json({ ok: false, error: "Faltan campos obligatorios." }, { status: 400 });
-    }
-
-    if (message.toLowerCase().includes("http://") || message.toLowerCase().includes("https://")) {
-      return NextResponse.json({ ok: true });
-    }
-
-    const to = process.env.LEAD_NOTIFY_EMAIL;
-    if (!to) {
-      return NextResponse.json({ ok: false, error: "LEAD_NOTIFY_EMAIL no configurado." }, { status: 500 });
-    }
-
-    if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json({ ok: false, error: "RESEND_API_KEY no configurado." }, { status: 500 });
-    }
-
-    const html = `
-      <h2>Nuevo Lead</h2>
-      <p><strong>Nombre:</strong> ${name}</p>
-      <p><strong>Email:</strong> ${email}</p>
-      <p><strong>Teléfono:</strong> ${phone || "-"}</p>
-      <p><strong>Mensaje:</strong><br/>${message.replace(/\n/g, "<br/>")}</p>
-    `;
-
-    await resend.emails.send({
-      from: "Leads Estudio <leads@estudioretamal.com.ar>",
-      to,
-      subject: `Nuevo lead: ${name}`,
-      html,
-    });
-
-    return NextResponse.json({ ok: true });
-  } catch (err: any) {
-    console.error(err);
-    return NextResponse.json({ ok: false, error: err?.message || "Error desconocido" }, { status: 500 });
+    return NextResponse.redirect(new URL("/contacto?ok=1", req.url));
+  } catch (e) {
+    return NextResponse.redirect(new URL("/contacto?ok=0", req.url));
   }
 }
