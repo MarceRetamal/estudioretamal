@@ -1,85 +1,64 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
+import { Inter, Cinzel } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const cinzel = Cinzel({ subsets: ["latin"], variable: "--font-cinzel" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://example.com"),
+  metadataBase: new URL("https://www.estudioretamal.com.ar"),
   title: {
-    default: "Estudio Retamal | Abogados",
+    default: "Estudio Retamal | Servicios Legales en La Plata",
     template: "%s | Estudio Retamal",
   },
-  description: "Soluciones legales claras y efectivas en La Plata: familia, laboral y defensa del consumidor.",
-  keywords: ["abogados", "La Plata", "familia", "laboral", "consumidor", "estudio jurídico"],
+  description:
+    "Abogados en La Plata. Familia, laboral, usuarios y consumidores. Atención rápida por WhatsApp. Primera consulta orientativa.",
+  keywords: [
+    "abogado La Plata", "estudio jurídico La Plata",
+    "familia", "laboral", "consumidor",
+  ],
   openGraph: {
     type: "website",
     locale: "es_AR",
-    url: "/",
+    url: "https://www.estudioretamal.com.ar",
     siteName: "Estudio Retamal",
-    title: "Estudio Retamal | Abogados",
-    description: "Soluciones legales claras y efectivas en La Plata.",
+    title: "Servicios Legales en La Plata",
+    description:
+      "Protegemos tus derechos con respuestas rápidas y efectivas.",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Estudio Retamal | Abogados",
-    description: "Soluciones legales claras y efectivas en La Plata.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "/",
-  },
+  twitter: { card: "summary_large_image" },
 };
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const ldOrg = {
+  // JSON-LD LegalService (ajusta dirección si hace falta)
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LegalService",
-    "name": "Estudio Retamal",
-    "image": (process.env.NEXT_PUBLIC_SITE_URL || "https://example.com") + "/og.png",
-    "url": process.env.NEXT_PUBLIC_SITE_URL || "https://example.com",
-    "address": {
+    name: "Estudio Retamal",
+    image: "https://www.estudioretamal.com.ar/og.jpg",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "La Plata",
-      "addressRegion": "Buenos Aires",
-      "addressCountry": "AR"
+      addressLocality: "La Plata",
+      addressRegion: "Buenos Aires",
+      addressCountry: "AR",
     },
-    "areaServed": ["La Plata", "Buenos Aires"],
-    "telephone": process.env.NEXT_PUBLIC_PHONE || "+54 9 11 0000-0000",
-    "priceRange": "$$",
-    "sameAs": [
-      process.env.NEXT_PUBLIC_INSTAGRAM || "",
-      process.env.NEXT_PUBLIC_FACEBOOK || ""
-    ]
+    areaServed: "La Plata y alrededores",
+    telephone: "+54 9 11 2582-6179",
+    email: "consultas@estudioretamal.com.ar",
+    url: "https://www.estudioretamal.com.ar",
+    sameAs: [
+      "https://g.page/", // tu Google Business Profile si lo tenés
+      "https://instagram.com/marce_rtm",
+    ],
   };
 
   return (
-    <html lang="es">
+    <html lang="es" className={`${inter.variable} ${cinzel.variable}`}>
       <body>
-        <header className="site">
-          <div className="container" style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
-            <a href="/" style={{display: "flex", alignItems: "center", gap: ".6rem"}}>
-              <span style={{width: 10, height: 10, borderRadius: 999, background: "var(--brand)", display: "inline-block"}} />
-              <strong>Estudio Retamal</strong>
-            </a>
-            <nav>
-              <a href="/areas">Áreas</a>
-              <a href="/equipo">Equipo</a>
-              <a href="/casos">Casos</a>
-              <a href="/recursos">Recursos</a>
-              <a className="btn" href="/contacto">Contacto</a>
-            </nav>
-          </div>
-        </header>
-        <main className="container">{children}</main>
-        <footer className="container muted" style={{borderTop: "1px solid var(--border)", paddingTop: "1.5rem"}}>
-          © {new Date().getFullYear()} Estudio Retamal. Todos los derechos reservados.
-        </footer>
         <script
           type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ldOrg) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        {children}
       </body>
     </html>
   );
