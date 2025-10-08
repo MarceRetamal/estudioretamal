@@ -1,8 +1,0 @@
-:root{
-  --bg:#0B0B0C;
-  --fg:#F5F1E6;
-  --accent:#8B5E3C;
-  --link:#1E3A5F;
-}
-html,body{background:var(--bg); color:var(--fg);}
-a{color:var(--link);}
