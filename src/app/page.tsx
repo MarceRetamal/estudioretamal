@@ -4,11 +4,13 @@ import { useEffect } from 'react'
 import { Navbar } from '@/components/navbar'
 import { Hero } from '@/components/hero'
 import { PracticeAreas } from '@/components/practice-areas'
-import { Team } from '@/components/team'
 import { Testimonials } from '@/components/testimonials'
 import { ContactForm } from '@/components/contact-form'
 import { Footer } from '@/components/footer'
 import { AccessibilityFeatures } from '@/components/accessibility'
+import { ChatWidget } from '@/components/chat-widget'
+import { AppointmentBooking } from '@/components/appointment-booking'
+import { BlogSection } from '@/components/blog-section'
 import { useScrollAnimation, useAnimateOnScroll } from '@/components/motion-interactions'
 
 export default function Home() {
@@ -36,7 +38,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-law-bg">
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Accessibility Features */}
       <AccessibilityFeatures />
       
@@ -51,8 +53,13 @@ export default function Home() {
         {/* Practice Areas Section */}
         <PracticeAreas />
         
-        {/* Team Section */}
-        <Team />
+        {/* Blog Section */}
+        <BlogSection />
+        
+        {/* Appointment Booking Section */}
+        <section id="citas" className="py-20 bg-white">
+          <AppointmentBooking />
+        </section>
         
         {/* Testimonials Section */}
         <Testimonials />
@@ -60,6 +67,9 @@ export default function Home() {
         {/* Contact Form Section */}
         <ContactForm />
       </main>
+      
+      {/* Chat Widget */}
+      <ChatWidget />
       
       {/* Footer */}
       <Footer />

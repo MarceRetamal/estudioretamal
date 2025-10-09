@@ -89,15 +89,11 @@ const config: Config = {
                 // Border radius
                 borderRadius: {
                         'none': '0',
-                        'sm': '4px',
-                        'md': '8px',
-                        'lg': '12px',
+                        'sm': 'calc(var(--radius) - 4px)',
+                        'md': 'calc(var(--radius) - 2px)',
+                        'lg': 'var(--radius)',
                         'xl': '16px',
-                        'full': '9999px',
-                        // Compatibilidad con shadcn/ui
-                        lg: 'var(--radius)',
-                        md: 'calc(var(--radius) - 2px)',
-                        sm: 'calc(var(--radius) - 4px)'
+                        'full': '9999px'
                 },
                 // Sombras
                 boxShadow: {
