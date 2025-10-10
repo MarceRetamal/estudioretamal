@@ -111,14 +111,8 @@ export function Navbar() {
                     "text-2xl font-serif font-bold transition-all duration-300 hover:tracking-wide",
                     isScrolled ? "text-slate-800 hover:text-indigo-600" : "text-white hover:text-cyan-300"
                   )}>
-                    Estudio Jurídico
+                    ER Soluciones Legales
                   </h1>
-                  <p className={cn(
-                    "text-xs font-medium tracking-wider transition-all duration-300",
-                    isScrolled ? "text-slate-600" : "text-slate-300"
-                  )}>
-                    Excelencia Legal desde 1999
-                  </p>
                 </Link>
               </div>
             </div>
@@ -196,10 +190,10 @@ export function Navbar() {
                       ? "hover:bg-gradient-to-r hover:from-emerald-500 hover:to-teal-600 hover:shadow-lg" 
                       : "text-slate-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
                   )}
-                  onClick={() => window.open('tel:+5491155550100')}
+                  onClick={() => window.open('tel:+5491125826179')}
                 >
                   <Phone className="h-4 w-4 mr-2" />
-                  <span className="hidden lg:inline font-medium">(011) 5555-0100</span>
+                  <span className="hidden lg:inline font-medium">+54-11-2582-6179</span>
                 </Button>
                 
                 <Button
@@ -211,7 +205,7 @@ export function Navbar() {
                       ? "hover:bg-gradient-to-r hover:from-green-500 hover:to-emerald-600 hover:shadow-lg" 
                       : "text-slate-200 hover:text-white hover:bg-white/10 hover:backdrop-blur-sm"
                   )}
-                  onClick={() => window.open('https://wa.me/5491155550100?text=Hola,%20me%20gustaría%20agendar%20una%20consulta.', '_blank')}
+                  onClick={() => window.open('https://wa.me/5491125826179?text=Hola,%20me%20gustaría%20agendar%20una%20consulta.', '_blank')}
                 >
                   <MessageCircle className="h-4 w-4" />
                 </Button>
@@ -287,7 +281,7 @@ export function Navbar() {
                       <Button 
                         variant="outline"
                         className="w-full justify-start"
-                        onClick={() => window.open('tel:+5491155550100')}
+                        onClick={() => window.open('tel:+5491125826179')}
                       >
                         <Phone className="h-4 w-4 mr-2" />
                         Llamar ahora
@@ -296,7 +290,7 @@ export function Navbar() {
                       <Button 
                         variant="outline"
                         className="w-full justify-start"
-                        onClick={() => window.open('https://wa.me/5491155550100?text=Hola,%20me%20gustaría%20agendar%20una%20consulta.', '_blank')}
+                        onClick={() => window.open('https://wa.me/5491125826179?text=Hola,%20me%20gustaría%20agendar%20una%20consulta.', '_blank')}
                       >
                         <MessageCircle className="h-4 w-4 mr-2" />
                         WhatsApp

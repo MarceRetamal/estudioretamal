@@ -42,13 +42,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: 'Teléfono',
-    value: '+54 11 5555-0100',
+    value: '+54 11 2582-6179',
     description: 'Lunes a Viernes 9:00-18:00'
   },
   {
     icon: Mail,
     label: 'Email',
-    value: 'contacto@estudiojuridico.com',
+    value: 'consultas@estudioretramal.com.ar',
     description: 'Respuesta en 24 horas'
   },
   {
@@ -138,8 +138,23 @@ export function ContactForm() {
     setSubmitStatus('idle')
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      // Send data to API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          selectedArea
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al enviar la consulta')
+      }
       
       setSubmitStatus('success')
       setFormData({
@@ -154,6 +169,7 @@ export function ContactForm() {
       })
       setSelectedArea('')
     } catch (error) {
+      console.error('Contact form error:', error)
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)
@@ -173,7 +189,7 @@ export function ContactForm() {
   }
 
   const openWhatsApp = () => {
-    const phoneNumber = '5491155550100'
+    const phoneNumber = '5491125826179'
     const message = encodeURIComponent('Hola, me gustaría agendar una consulta inicial.')
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
   }
@@ -301,6 +317,34 @@ export function ContactForm() {
                     >
                       Enviar otra consulta
                     </Button>
+                  </div>
+                ) : submitStatus === 'error' ? (
+                  <div className="text-center py-12 space-y-4">
+                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto">
+                      <AlertCircle className="h-8 w-8 text-red-600" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-red-800">
+                      Error al enviar
+                    </h3>
+                    <p className="text-red-600">
+                      Hubo un problema al enviar tu consulta. Por favor intenta nuevamente o contáctanos directamente por WhatsApp.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Button 
+                        onClick={() => setSubmitStatus('idle')}
+                        variant="outline"
+                        className="border-red-600 text-red-600 hover:bg-red-50"
+                      >
+                        Intentar nuevamente
+                      </Button>
+                      <Button 
+                        onClick={openWhatsApp}
+                        className="bg-green-500 hover:bg-green-600 text-white"
+                      >
+                        <MessageCircle className="mr-2 h-4 w-4" />
+                        Contactar por WhatsApp
+                      </Button>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">

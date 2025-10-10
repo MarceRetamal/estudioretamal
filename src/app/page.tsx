@@ -11,6 +11,7 @@ import { AccessibilityFeatures } from '@/components/accessibility'
 import { ChatWidget } from '@/components/chat-widget'
 import { AppointmentBooking } from '@/components/appointment-booking'
 import { BlogSection } from '@/components/blog-section'
+import { SuccessCases } from '@/components/success-cases'
 import { useScrollAnimation, useAnimateOnScroll } from '@/components/motion-interactions'
 
 export default function Home() {
@@ -55,6 +56,9 @@ export default function Home() {
         
         {/* Blog Section */}
         <BlogSection />
+        
+        {/* Success Cases Section */}
+        <SuccessCases />
         
         {/* Appointment Booking Section */}
         <section id="citas" className="py-20 bg-white">

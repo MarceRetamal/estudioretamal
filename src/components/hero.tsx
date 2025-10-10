@@ -22,7 +22,7 @@ export function Hero() {
   }
 
   const openWhatsApp = () => {
-    const phoneNumber = '5491155550100'
+    const phoneNumber = '5491125826179'
     const message = encodeURIComponent('Hola, me gustaría agendar una consulta inicial.')
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
   }

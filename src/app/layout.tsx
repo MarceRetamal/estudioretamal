@@ -1,4 +1,3 @@
-import * as React from "react";
 import type { Metadata } from "next";
 import { Inter, Libre_Baskerville } from "next/font/google";
 import "./globals.css";
