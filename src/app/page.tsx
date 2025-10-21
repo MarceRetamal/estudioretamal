@@ -7,11 +7,11 @@ import { PracticeAreas } from '@/components/practice-areas'
 import { Testimonials } from '@/components/testimonials'
 import { ContactForm } from '@/components/contact-form'
 import { Footer } from '@/components/footer'
-import { AccessibilityFeatures } from '@/components/accessibility'
-import { ChatWidget } from '@/components/chat-widget'
-import { AppointmentBooking } from '@/components/appointment-booking'
-import { BlogSection } from '@/components/blog-section'
-import { SuccessCases } from '@/components/success-cases'
+// import { AccessibilityFeatures } from '@/components/accessibility'
+// import { ChatWidget } from '@/components/chat-widget'
+// import { AppointmentBooking } from '@/components/appointment-booking'
+// import { BlogSection } from '@/components/blog-section'
+// import { SuccessCases } from '@/components/success-cases'
 import { useScrollAnimation, useAnimateOnScroll } from '@/components/motion-interactions'
 
 export default function Home() {
@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Accessibility Features */}
-      <AccessibilityFeatures />
+      {/* <AccessibilityFeatures /> */}
       
       {/* Navigation */}
       <Navbar />
@@ -54,16 +54,18 @@ export default function Home() {
         {/* Practice Areas Section */}
         <PracticeAreas />
         
-        {/* Blog Section */}
-        <BlogSection />
+        {/* Blog Section - Temporalmente desactivado */}
+        {/* <BlogSection /> */}
         
-        {/* Success Cases Section */}
-        <SuccessCases />
+        {/* Success Cases Section - Temporalmente desactivado */}
+        {/* <SuccessCases /> */}
         
-        {/* Appointment Booking Section */}
+        {/* Appointment Booking Section - Temporalmente desactivado */}
+        {/* 
         <section id="citas" className="py-20 bg-white">
           <AppointmentBooking />
         </section>
+        */}
         
         {/* Testimonials Section */}
         <Testimonials />
@@ -72,8 +74,8 @@ export default function Home() {
         <ContactForm />
       </main>
       
-      {/* Chat Widget */}
-      <ChatWidget />
+      {/* Chat Widget - Temporalmente desactivado */}
+      {/* <ChatWidget /> */}
       
       {/* Footer */}
       <Footer />
