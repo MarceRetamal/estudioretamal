@@ -238,7 +238,7 @@ Personalizar duraciones y easing en las utilidades CSS
 
 ## 📄 Licencia
 
-Proyecto desarrollado para Estudio Jurídico. Todos los derechos reservados.
+Proyecto desarrollado para Estudio Jurídico Retamal. Todos los derechos reservados.
 
 ---
 
