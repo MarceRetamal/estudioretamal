@@ -24,7 +24,7 @@ export default function Home() {
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement
       const href = target.getAttribute('href')
-      
+
       if (href && href.startsWith('#')) {
         e.preventDefault()
         const element = document.querySelector(href)
@@ -42,41 +42,41 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Accessibility Features */}
       {/* <AccessibilityFeatures /> */}
-      
+
       {/* Navigation */}
       <Navbar />
-      
+
       {/* Main Content */}
       <main>
         {/* Hero Section */}
         <Hero />
-        
+
         {/* Practice Areas Section */}
         <PracticeAreas />
-        
+
         {/* Blog Section - Temporalmente desactivado */}
         {/* <BlogSection /> */}
-        
+
         {/* Success Cases Section - Temporalmente desactivado */}
         {/* <SuccessCases /> */}
-        
+
         {/* Appointment Booking Section - Temporalmente desactivado */}
         {/* 
         <section id="citas" className="py-20 bg-white">
           <AppointmentBooking />
         </section>
         */}
-        
+
         {/* Testimonials Section */}
         <Testimonials />
-        
+
         {/* Contact Form Section */}
         <ContactForm />
       </main>
-      
+
       {/* Chat Widget - Temporalmente desactivado */}
       {/* <ChatWidget /> */}
-      
+
       {/* Footer */}
       <Footer />
     </div>
